@@ -220,7 +220,7 @@ const HoldItemComponent = ({
   const scaleHold = () => {
     'worklet';
     itemScale.value = withTiming(
-      HOLD_ITEM_SCALE_DOWN_VALUE,
+      activateOn === 'tap' ? 1 : HOLD_ITEM_SCALE_DOWN_VALUE,
       { duration: HOLD_ITEM_SCALE_DOWN_DURATION },
       onCompletion
     );
@@ -231,7 +231,7 @@ const HoldItemComponent = ({
     isAnimationStarted.value = true;
 
     itemScale.value = withSequence(
-      withTiming(HOLD_ITEM_SCALE_DOWN_VALUE, {
+      withTiming(activateOn === 'tap' ? 1 : HOLD_ITEM_SCALE_DOWN_VALUE, {
         duration: HOLD_ITEM_SCALE_DOWN_DURATION,
       }),
       withTiming(
