@@ -86,7 +86,7 @@ const MenuListComponent = () => {
       ...(menuProps.value.disableBackdrop && {
         shadowRadius: 50,
         shadowColor: 'black',
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.15,
         elevation: 8,
       }),
     };

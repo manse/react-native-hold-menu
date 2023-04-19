@@ -133,6 +133,12 @@ export type HoldItemProps = {
    * disabled={true}
    */
   disableBackdrop?: boolean;
+
+  /**
+   * Offset for menu position
+   */
+  offsetX?: number;
+  offsetY?: number;
 };
 
 export type GestureHandlerProps = {

@@ -110,6 +110,7 @@ const Playground = ({}: PlaygroundProps) => {
             activateOn="tap"
             hapticFeedback="None"
             disableBackdrop
+            offsetX={20}
           >
             <View style={themeStyles.item}>
               <View style={[themeStyles.dot, styles.topLeft]} />

@@ -67,6 +67,8 @@ const HoldItemComponent = ({
   closeOnTap,
   longPressMinDurationMs = 150,
   disableBackdrop,
+  offsetX,
+  offsetY,
   children,
 }: HoldItemProps) => {
   //#region hooks
@@ -182,8 +184,8 @@ const HoldItemComponent = ({
     menuProps.value = {
       itemHeight: itemRectHeight.value,
       itemWidth: itemRectWidth.value,
-      itemY: itemRectY.value,
-      itemX: itemRectX.value,
+      itemY: itemRectY.value + (offsetY ?? 0),
+      itemX: itemRectX.value + (offsetX ?? 0),
       anchorPosition: transformOrigin.value,
       menuHeight: menuHeight,
       items,
@@ -335,7 +337,7 @@ const HoldItemComponent = ({
         : withTiming(-0.1, { duration: HOLD_ITEM_TRANSFORM_DURATION });
 
     return {
-      zIndex: 10,
+      ...(!disableBackdrop && { zIndex: 10 }),
       position: 'absolute',
       top: itemRectY.value,
       left: itemRectX.value,
@@ -354,14 +356,6 @@ const HoldItemComponent = ({
       ],
     };
   });
-  const portalContainerStyle = useMemo(
-    () => [
-      styles.holdItem,
-      animatedPortalStyle,
-      disableBackdrop ? { zIndex: 9 } : null,
-    ],
-    [animatedPortalStyle, disableBackdrop]
-  );
 
   const animatedPortalProps = useAnimatedProps<ViewProps>(() => ({
     pointerEvents: isActive.value ? 'auto' : 'none',
@@ -437,7 +431,7 @@ const HoldItemComponent = ({
       <Portal key={key} name={key}>
         <Animated.View
           key={key}
-          style={portalContainerStyle}
+          style={animatedPortalStyle}
           animatedProps={animatedPortalProps}
         >
           <PortalOverlay />
