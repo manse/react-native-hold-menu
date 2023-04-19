@@ -37,7 +37,7 @@ type Context = {
 };
 
 const BackdropComponent = () => {
-  const { state, theme, menuProps } = useInternal();
+  const { state, menuProps } = useInternal();
 
   const tapGestureEvent = useAnimatedGestureHandler<
     TapGestureHandlerGestureEvent,
