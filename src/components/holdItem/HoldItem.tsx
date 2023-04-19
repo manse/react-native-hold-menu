@@ -355,8 +355,12 @@ const HoldItemComponent = ({
     };
   });
   const portalContainerStyle = useMemo(
-    () => [styles.holdItem, animatedPortalStyle],
-    [animatedPortalStyle]
+    () => [
+      styles.holdItem,
+      animatedPortalStyle,
+      disableBackdrop ? { zIndex: 9 } : null,
+    ],
+    [animatedPortalStyle, disableBackdrop]
   );
 
   const animatedPortalProps = useAnimatedProps<ViewProps>(() => ({
