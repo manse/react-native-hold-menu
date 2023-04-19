@@ -50,6 +50,7 @@ const ProviderComponent = ({
     menuHeight: 0,
     transformValue: 0,
     actionParams: {},
+    disableBackdrop: false,
   });
 
   useEffect(() => {
