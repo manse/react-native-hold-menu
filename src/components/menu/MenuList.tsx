@@ -87,6 +87,7 @@ const MenuListComponent = () => {
         shadowRadius: 50,
         shadowColor: 'black',
         shadowOpacity: 0.2,
+        elevation: 8,
       }),
     };
   });
