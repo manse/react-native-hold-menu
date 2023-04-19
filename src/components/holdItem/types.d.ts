@@ -124,6 +124,15 @@ export type HoldItemProps = {
    * longPressMinDurationMs={250}
    */
   longPressMinDurationMs?: number;
+
+  /**
+   * Set true if you want to disable backdrop blur mask
+   * @type boolean
+   * @default false
+   * @examples
+   * disabled={true}
+   */
+  disableBackdrop?: boolean;
 };
 
 export type GestureHandlerProps = {

@@ -16,7 +16,7 @@ import Clubhouse, {
 } from './screens/Clubhouse';
 
 // Components
-import { HoldMenuProvider } from 'react-native-hold-menu';
+import { HoldMenuProvider } from '@manse/react-native-hold-menu';
 import FeatherIcon from '@expo/vector-icons/Feather';
 
 // Utils
@@ -55,11 +55,11 @@ const App = () => {
   }, [state]);
 
   const onOpen = useCallback(() => {
-    console.log('App onOpen')
+    console.log('App onOpen');
   }, []);
 
   const onClose = useCallback(() => {
-    console.log('App onClose')
+    console.log('App onClose');
   }, []);
 
   return (

@@ -51,7 +51,7 @@ const MenuListComponent = () => {
   }, [menuProps]);
   const prevList = useSharedValue<MenuItemProps[]>([]);
 
-  const messageStyles = useAnimatedStyle(() => {
+  const layoutStyles = useAnimatedStyle(() => {
     const itemsWithSeparator = menuProps.value.items.filter(
       item => item.withSeparator
     );
@@ -72,15 +72,8 @@ const MenuListComponent = () => {
             duration: HOLD_ITEM_TRANSFORM_DURATION,
           });
 
-    const opacityAnimation = () =>
-      withTiming(state.value === CONTEXT_MENU_STATE.ACTIVE ? 1 : 0, {
-        duration: HOLD_ITEM_TRANSFORM_DURATION,
-      });
-
     return {
       left: _leftPosition,
-      height: menuHeight.value,
-      opacity: opacityAnimation(),
       transform: [
         { translateX: translate.beginningTransformations.translateX },
         { translateY: translate.beginningTransformations.translateY },
@@ -90,6 +83,23 @@ const MenuListComponent = () => {
         { translateX: translate.endingTransformations.translateX },
         { translateY: translate.endingTransformations.translateY },
       ],
+      ...(menuProps.value.disableBackdrop && {
+        shadowRadius: 50,
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+      }),
+    };
+  });
+
+  const messageStyles = useAnimatedStyle(() => {
+    const opacityAnimation = () =>
+      withTiming(state.value === CONTEXT_MENU_STATE.ACTIVE ? 1 : 0, {
+        duration: HOLD_ITEM_TRANSFORM_DURATION,
+      });
+
+    return {
+      opacity: opacityAnimation(),
+      height: menuHeight.value,
     };
   });
 
@@ -126,21 +136,25 @@ const MenuListComponent = () => {
   );
 
   return (
-    <AnimatedView
-      intensity={100}
-      animatedProps={animatedProps}
-      style={[styles.menuContainer, messageStyles]}
+    <Animated.View
+      style={[styles.layoutContainer, layoutStyles, messageStyles]}
     >
-      <Animated.View
-        style={[
-          StyleSheet.absoluteFillObject,
-          styles.menuInnerContainer,
-          animatedInnerContainerStyle,
-        ]}
+      <AnimatedView
+        intensity={100}
+        animatedProps={animatedProps}
+        style={[styles.menuContainer, messageStyles]}
       >
-        <MenuItems items={itemList} />
-      </Animated.View>
-    </AnimatedView>
+        <Animated.View
+          style={[
+            StyleSheet.absoluteFillObject,
+            styles.menuInnerContainer,
+            animatedInnerContainerStyle,
+          ]}
+        >
+          <MenuItems items={itemList} />
+        </Animated.View>
+      </AnimatedView>
+    </Animated.View>
   );
 };
 

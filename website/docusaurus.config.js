@@ -8,7 +8,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'enesozturk',
-  projectName: 'react-native-hold-menu',
+  projectName: '@manse/react-native-hold-menu',
   themeConfig: {
     twitterImage: 'img/og.png',
     image: 'img/og.png',

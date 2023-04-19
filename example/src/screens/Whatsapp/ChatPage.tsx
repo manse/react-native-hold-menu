@@ -6,7 +6,7 @@ import StyleGuide from '../../utilities/styleGuide';
 import MessageItem from './MessageItem';
 import { mockWhatsAppData } from '../../utilities/data';
 import { useAppContext } from '../../hooks/useAppContext';
-import { HoldMenuFlatList } from 'react-native-hold-menu';
+import { HoldMenuFlatList } from '@manse/react-native-hold-menu';
 
 const ChatPage = () => {
   const { theme } = useAppContext();

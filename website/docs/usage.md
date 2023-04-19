@@ -17,7 +17,7 @@ See all the [HoldMenuProvider props](/react-native-hold-menu/docs/props#holdmenu
 ```tsx
 import React from 'react';
 
-import { HoldMenuProvider } from 'react-native-hold-menu';
+import { HoldMenuProvider } from '@manse/react-native-hold-menu';
 
 const App = () => {
   return (
@@ -40,7 +40,7 @@ See all the [HoldItem props](/react-native-hold-menu/docs/props#holditem).
 import React from 'react';
 import { View } from 'react-native';
 
-import { HoldItem } from 'react-native-hold-menu';
+import { HoldItem } from '@manse/react-native-hold-menu';
 
 import styles from './styles';
 

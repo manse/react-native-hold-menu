@@ -41,7 +41,7 @@ type Context = {
 };
 
 const BackdropComponent = () => {
-  const { state, theme } = useInternal();
+  const { state, theme, menuProps } = useInternal();
 
   const tapGestureEvent = useAnimatedGestureHandler<
     TapGestureHandlerGestureEvent,
@@ -88,7 +88,7 @@ const BackdropComponent = () => {
 
     return {
       top: topValueAnimation(),
-      opacity: opacityValueAnimation(),
+      opacity: menuProps.value.disableBackdrop ? 0 : opacityValueAnimation(),
     };
   });
 

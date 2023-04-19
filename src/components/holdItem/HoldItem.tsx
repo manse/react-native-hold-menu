@@ -66,6 +66,7 @@ const HoldItemComponent = ({
   actionParams,
   closeOnTap,
   longPressMinDurationMs = 150,
+  disableBackdrop,
   children,
 }: HoldItemProps) => {
   //#region hooks
@@ -188,6 +189,7 @@ const HoldItemComponent = ({
       items,
       transformValue: transformValue.value,
       actionParams: actionParams || {},
+      disableBackdrop: Boolean(disableBackdrop),
     };
   };
 

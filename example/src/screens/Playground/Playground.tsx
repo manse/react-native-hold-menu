@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
 import { View } from 'react-native';
 
-import { HoldItem } from 'react-native-hold-menu';
+import { HoldItem } from '@manse/react-native-hold-menu';
 
 import styles from './styles';
 import { useAppContext } from '../../hooks/useAppContext';
@@ -105,7 +105,12 @@ const Playground = ({}: PlaygroundProps) => {
           </HoldItem>
         </View>
         <View style={[styles.row]}>
-          <HoldItem items={items}>
+          <HoldItem
+            items={items}
+            activateOn="tap"
+            hapticFeedback="None"
+            disableBackdrop
+          >
             <View style={themeStyles.item}>
               <View style={[themeStyles.dot, styles.topLeft]} />
             </View>

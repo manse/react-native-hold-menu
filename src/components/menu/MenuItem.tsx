@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import Separator from './Separator';
@@ -24,13 +24,13 @@ type MenuItemComponentProps = {
 const MenuItemComponent = ({ item, isLast }: MenuItemComponentProps) => {
   const { state, theme, menuProps } = useInternal();
 
-  const borderStyles = useAnimatedStyle(() => {
-    const borderBottomColor =
+  const separatorStyles = useAnimatedStyle(() => {
+    const backgroundColor =
       theme.value === 'dark' ? BORDER_DARK_COLOR : BORDER_LIGHT_COLOR;
-
     return {
-      borderBottomColor,
-      borderBottomWidth: isLast ? 0 : 1,
+      width: '100%',
+      backgroundColor,
+      height: isLast ? 0 : 1,
     };
   }, [theme, isLast, item]);
 
@@ -52,7 +52,7 @@ const MenuItemComponent = ({ item, isLast }: MenuItemComponentProps) => {
       <AnimatedTouchable
         onPress={handleOnPress}
         activeOpacity={!item.isTitle ? 0.4 : 1}
-        style={[styles.menuItem, borderStyles]}
+        style={styles.menuItem}
       >
         <Animated.Text
           style={[
@@ -70,6 +70,7 @@ const MenuItemComponent = ({ item, isLast }: MenuItemComponentProps) => {
             item.icon()
           ) : null)}
       </AnimatedTouchable>
+      <Animated.View style={separatorStyles} />
       {item.withSeparator && <Separator />}
     </>
   );
