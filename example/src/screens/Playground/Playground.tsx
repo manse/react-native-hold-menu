@@ -20,6 +20,7 @@ const Playground = ({}: PlaygroundProps) => {
     {
       text: 'Home',
       icon: 'home',
+      checked: false,
       onPress: () => {
         console.log('[ACTION]: Home');
       },
@@ -27,6 +28,7 @@ const Playground = ({}: PlaygroundProps) => {
     {
       text: 'Edit',
       icon: 'edit',
+      checked: true,
       onPress: () => {
         console.log('[ACTION]: Edit');
       },

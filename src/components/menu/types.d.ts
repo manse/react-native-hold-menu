@@ -2,6 +2,7 @@ import { TransformOriginAnchorPosition } from '../../utils/calculations';
 
 export type MenuItemProps = {
   text: string;
+  checked?: boolean;
   icon?: string | (() => React.ReactElement);
   onPress?: (...args: any[]) => void;
   isTitle?: boolean;

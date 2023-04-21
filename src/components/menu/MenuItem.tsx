@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Platform, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import Separator from './Separator';
@@ -30,12 +30,17 @@ const MenuItemComponent = ({ item, isLast }: MenuItemComponentProps) => {
     return {
       width: '100%',
       backgroundColor,
-      height: isLast ? 0 : Platform.OS === 'ios' ? 0.5 : 1,
+      height: isLast ? 0 : 1,
     };
   }, [theme, isLast, item]);
 
   const textColor = useAnimatedStyle(() => {
     return { color: getColor(item.isTitle, item.isDestructive, theme.value) };
+  }, [theme, item]);
+  const tintColor = useAnimatedStyle(() => {
+    return {
+      tintColor: getColor(item.isTitle, item.isDestructive, theme.value),
+    };
   }, [theme, item]);
 
   const handleOnPress = useCallback(() => {
@@ -54,6 +59,16 @@ const MenuItemComponent = ({ item, isLast }: MenuItemComponentProps) => {
         activeOpacity={!item.isTitle ? 0.4 : 1}
         style={styles.menuItem}
       >
+        {'checked' in item ? (
+          <View style={styles.menuItemCheckContainer}>
+            {item.checked ? (
+              <Animated.Image
+                style={[styles.menuItemCheckIcon, tintColor]}
+                source={require('../icon/check.png')}
+              />
+            ) : null}
+          </View>
+        ) : null}
         <Animated.Text
           style={[
             item.isTitle ? styles.menuItemTitleText : styles.menuItemText,

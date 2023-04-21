@@ -40,12 +40,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: styleGuide.spacing * 2,
+    paddingHorizontal: styleGuide.spacing * 1.5,
     paddingVertical: styleGuide.spacing * 1.25,
   },
   border: {
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  menuItemCheckContainer: {
+    width: styleGuide.spacing * 2.5,
+    justifyContent: 'center',
+  },
+  menuItemCheckIcon: {
+    width: styleGuide.spacing * 1.5,
+    height: styleGuide.spacing * 1.5,
   },
   menuItemText: {
     fontSize: styleGuide.typography.callout.fontSize,
