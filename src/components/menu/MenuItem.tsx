@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Platform, TouchableOpacity } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import Separator from './Separator';
@@ -30,7 +30,7 @@ const MenuItemComponent = ({ item, isLast }: MenuItemComponentProps) => {
     return {
       width: '100%',
       backgroundColor,
-      height: isLast ? 0 : 1,
+      height: isLast ? 0 : Platform.OS === 'ios' ? 0.5 : 1,
     };
   }, [theme, isLast, item]);
 
